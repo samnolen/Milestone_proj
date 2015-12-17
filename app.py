@@ -1,6 +1,5 @@
 import numpy as np
 import time
-import Quandl
 import requests
 import pandas
 from bokeh.charts import Line
