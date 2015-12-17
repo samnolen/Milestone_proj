@@ -10,7 +10,6 @@ from flask import Flask, render_template, request, redirect, send_from_directory
 from StringIO import StringIO
 from werkzeug import secure_filename
 
-Quandl.api_key = "sJN4VTedn6CE_mZ-6LrM"
 UPLOAD_FOLDER = '/uploads'
 ALLOWED_EXTENSIONS = set(['txt'])
 
@@ -30,7 +29,6 @@ def index():
   else: # request.method == 'POST'
     app.vars['stock'] = request.form['ticker']
     app.vars['choice'] = request.form['features']
-    #r = Quandl.get("WIKI/"+app.vars['stock'], returns=pandas)
     j = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/' + app.vars['stock'] +'.csv?api_key=sJN4VTedn6CE_mZ-6LrM')
     jprime = j.content
     r = pandas.read_csv(StringIO(jprime))
